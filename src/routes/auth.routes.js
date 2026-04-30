@@ -7,6 +7,14 @@ const authRouter = express.Router() //defined a router
 authRouter.post("/register",async(req,res)=>{
     const {email,name,password} = req.body //Extract the Data
 
+    const isUserAlreadyExists = await userModel.findOne({email})
+
+    if(isUserAlreadyExists){
+        return res.status(400).json({
+            message : "User already exist with this email address."
+        })
+    }
+
     const user = await userModel.create({
         email,password,name
     })
