@@ -6,6 +6,7 @@ const app = express()
 
 app.use(express.json()) //Middleware Activated
 app.use(cookieParser()) //Middleware Activated
+
 app.use("/api/auth",authRouter) //Plugging in Auth Routes
 
 module.exports = app

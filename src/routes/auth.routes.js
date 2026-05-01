@@ -39,4 +39,12 @@ authRouter.post("/register",async(req,res)=>{
     })
 })
 
+authRouter.post("/protected",async(req,res)=>{
+    console.log(req.cookies)
+
+    res.status(200).json({
+        message : "this is a protected route"
+    })
+})
+
 module.exports = authRouter //Export Router
